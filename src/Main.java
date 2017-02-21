@@ -45,12 +45,14 @@ public class Main {
             }
             arrayIndex++;
         }
+        Integer[] resultArray = Arrays.copyOfRange(minCurrentArray, 0, minElemIndex);
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////");
         System.out.println("INITIAL_BONUS = " + INITIAL_BONUS
-                + "     minCurrentArray = " + Arrays.deepToString(minCurrentArray)
+                + "     resultArray = " + Arrays.deepToString(resultArray)
                 + "     minPreviousBonus = " + minPreviousBonus
                 + "     minPreviousBonus = " + minCurrentBonus
                 + "     minArrayIndex = " + minArrayIndex
-                + "     minElemIndex = " + minElemIndex);
+                + "     minElemIndex = " + minElemIndex
+        );
     }
 }
