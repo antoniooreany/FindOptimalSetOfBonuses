@@ -17,8 +17,6 @@ public class Permute {
             Collections.swap(arr, k, i);
         }
         if (k == arr.size() - 1) {
-//            System.out.println(Arrays.toString(arr.toArray()));
-
             Integer[] integers = (Integer[]) arr.toArray();
             lists.add(integers);
         }
