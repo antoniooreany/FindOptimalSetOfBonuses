@@ -5,10 +5,8 @@ import java.util.List;
  * Created by gorshkov on 21.02.2017.
  */
 public class Main {
-
     private static final int INITIAL_BONUS = 4;
     private static final List<Integer> INITIAL_LIST = Arrays.asList(1, 2, 3);
-
     private static Integer[] minCurrentArray;
     private static int minPreviousBonus;
     private static int minCurrentBonus = INITIAL_BONUS;
@@ -17,7 +15,6 @@ public class Main {
     private static List<List<Integer>> bestArrays;
 
     public static void main(String[] args) {
-
         List<Integer[]> arrays = Permute.permute(INITIAL_LIST);
         int arrayIndex = 0;
         for (Integer[] currentArray : arrays) {

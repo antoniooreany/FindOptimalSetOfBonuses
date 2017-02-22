@@ -27,6 +27,7 @@ public class Permute {
         return permute(arr, 0);
     }
 
+    //Test method for permute()
     public static void main(String[] args) {
         List<Integer[]> listIntegers = permute(Arrays.asList(1, 2, 3));
         for (Integer[] integers : listIntegers) {
