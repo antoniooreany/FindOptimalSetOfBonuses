@@ -17,7 +17,7 @@ public class Permute {
             Collections.swap(arr, k, i);
         }
         if (k == arr.size() - 1) {
-            lists.add(arr);
+            lists.add(new ArrayList<>(arr));
         }
         return lists;
     }
