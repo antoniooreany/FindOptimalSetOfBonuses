@@ -4,7 +4,7 @@ import java.util.*;
  * Created by gorshkov on 21.02.2017.
  */
 public class Main {
-    private static final int INITIAL_BONUS = 4;
+    private static final int INITIAL_BONUS = 40;
     private static final List<Integer> INITIAL_LIST = Arrays.asList(1, 2, 3, 4);
     private static Map<List<Integer>, Integer> resultedMap = new HashMap<>();
 
