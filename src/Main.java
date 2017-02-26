@@ -11,22 +11,13 @@ public class Main {
     public static void main(String[] args) {
         List<List<Integer>> lists = Permute.permute(INITIAL_LIST);
         for (List<Integer> list : lists) {
-            List<Integer> resultedList;
             int currentBonus, nextElem, nextIndex, nextBonus = INITIAL_BONUS;
             for (nextIndex = 0; nextIndex < list.size(); nextIndex++) {
                 currentBonus = nextBonus;
                 nextElem = list.get(nextIndex);
                 nextBonus = nextBonus - nextElem;
-                if ((currentBonus >= 0 && nextBonus < 0)) {
-                    resultedList = list.subList(0, nextIndex);
-                    PrintToConsole(list, resultedList, currentBonus, nextBonus);
-                    resultedMap.put(resultedList, currentBonus);
-                }
-                if (nextBonus >= 0 && nextIndex == list.size() - 1) {
-                    resultedList = list;
-                    PrintToConsole(list, resultedList, currentBonus, nextBonus);
-                    resultedMap.put(resultedList, nextBonus);
-                }
+                fillResultedMapWithCuttingList(list, currentBonus, nextIndex, nextBonus);
+                fillResultedMapWithoutCuttingList(list, currentBonus, nextIndex, nextBonus);
             }
         }
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////");
@@ -38,6 +29,24 @@ public class Main {
         bestLists = bestListsCreation(resultedSet, minBonus, bestLists);
         System.out.println("bestLists");
         bestLists.forEach(System.out::println);
+    }
+
+    private static void fillResultedMapWithoutCuttingList(List<Integer> list, int currentBonus, int nextIndex, int nextBonus) {
+        List<Integer> resultedList;
+        if (nextBonus >= 0 && nextIndex == list.size() - 1) {
+            resultedList = list;
+            PrintToConsole(list, resultedList, currentBonus, nextBonus);
+            resultedMap.put(resultedList, nextBonus);
+        }
+    }
+
+    private static void fillResultedMapWithCuttingList(List<Integer> list, int currentBonus, int nextIndex, int nextBonus) {
+        List<Integer> resultedList;
+        if ((currentBonus >= 0 && nextBonus < 0)) {
+            resultedList = list.subList(0, nextIndex);
+            PrintToConsole(list, resultedList, currentBonus, nextBonus);
+            resultedMap.put(resultedList, currentBonus);
+        }
     }
 
     private static List<List<Integer>> bestListsCreation(Set<List<Integer>> resultedSet, int minBonus, List<List<Integer>> bestLists) {
