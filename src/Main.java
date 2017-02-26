@@ -4,18 +4,15 @@ import java.util.*;
  * Created by gorshkov on 21.02.2017.
  */
 public class Main {
-    private static final int INITIAL_BONUS = 40;
-    private static final List<Integer> INITIAL_LIST = Arrays.asList(1, 2, 3, 4);
+    private static final int INITIAL_BONUS = 10;
+    private static final List<Integer> INITIAL_LIST = Arrays.asList(1, 2, 3, 4, 5);
     private static Map<List<Integer>, Integer> resultedMap = new HashMap<>();
 
     public static void main(String[] args) {
         List<List<Integer>> lists = Permute.permute(INITIAL_LIST);
         for (List<Integer> list : lists) {
             List<Integer> resultedList;
-            int currentBonus;
-            int nextBonus = INITIAL_BONUS;
-            int nextElem;
-            int nextIndex;
+            int currentBonus, nextElem, nextIndex, nextBonus = INITIAL_BONUS;
             for (nextIndex = 0; nextIndex < list.size(); nextIndex++) {
                 currentBonus = nextBonus;
                 nextElem = list.get(nextIndex);
@@ -32,14 +29,15 @@ public class Main {
                 }
             }
         }
-        System.out.println("//////////////////////////////////////////////////////////////////////////");
+        System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////");
 
         Set<List<Integer>> resultedSet = resultedMap.keySet();
         int minBonus = INITIAL_BONUS;
         List<List<Integer>> bestLists = new ArrayList<>();
         minBonus = getMinBonus(resultedSet, minBonus);
         bestLists = bestListsCreation(resultedSet, minBonus, bestLists);
-        System.out.println("bestLists = " + bestLists);
+        System.out.println("bestLists");
+        bestLists.forEach(System.out::println);
     }
 
     private static List<List<Integer>> bestListsCreation(Set<List<Integer>> resultedSet, int minBonus, List<List<Integer>> bestLists) {
