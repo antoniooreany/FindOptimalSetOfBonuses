@@ -16,8 +16,7 @@ public class Main {
                 currentBonus = nextBonus;
                 nextElem = list.get(nextIndex);
                 nextBonus = nextBonus - nextElem;
-                fillResultedMapWithCuttingList(list, currentBonus, nextIndex, nextBonus);
-                fillResultedMapWithoutCuttingList(list, currentBonus, nextIndex, nextBonus);
+                fillResultedMap(list, currentBonus, nextIndex, nextBonus);
             }
         }
         System.out.println("/////////////////////////////////////////////////////////////////////////////////////////////");
@@ -27,25 +26,22 @@ public class Main {
         List<List<Integer>> bestLists = new ArrayList<>();
         minBonus = getMinBonus(resultedSet, minBonus);
         bestLists = bestListsCreation(resultedSet, minBonus, bestLists);
-        System.out.println("bestLists");
+        System.out.println("bestLists:");
         bestLists.forEach(System.out::println);
     }
 
-    private static void fillResultedMapWithoutCuttingList(List<Integer> list, int currentBonus, int nextIndex, int nextBonus) {
-        List<Integer> resultedList;
-        if (nextBonus >= 0 && nextIndex == list.size() - 1) {
-            resultedList = list;
-            PrintToConsole(list, resultedList, currentBonus, nextBonus);
-            resultedMap.put(resultedList, nextBonus);
-        }
-    }
-
-    private static void fillResultedMapWithCuttingList(List<Integer> list, int currentBonus, int nextIndex, int nextBonus) {
+    private static void fillResultedMap(List<Integer> list, int currentBonus, int nextIndex, int nextBonus) {
         List<Integer> resultedList;
         if ((currentBonus >= 0 && nextBonus < 0)) {
             resultedList = list.subList(0, nextIndex);
             PrintToConsole(list, resultedList, currentBonus, nextBonus);
             resultedMap.put(resultedList, currentBonus);
+        }
+
+        if (nextBonus >= 0 && nextIndex == list.size() - 1) {
+            resultedList = list;
+            PrintToConsole(list, resultedList, currentBonus, nextBonus);
+            resultedMap.put(resultedList, nextBonus);
         }
     }
 
