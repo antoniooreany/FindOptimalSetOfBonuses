@@ -32,17 +32,19 @@ public class Main {
 
     private static void fillResultedMap(List<Integer> list, int currentBonus, int nextIndex, int nextBonus) {
         List<Integer> resultedList;
-        if ((currentBonus >= 0 && nextBonus < 0)) {
+        if ((nextBonus < 0 && currentBonus >= 0)) {
             resultedList = list.subList(0, nextIndex);
-            PrintToConsole(list, resultedList, currentBonus, nextBonus);
-            resultedMap.put(resultedList, currentBonus);
+            PrintToConsoleAndFillResultedMap(list, currentBonus, nextBonus, resultedList);
         }
-
         if (nextBonus >= 0 && nextIndex == list.size() - 1) {
             resultedList = list;
-            PrintToConsole(list, resultedList, currentBonus, nextBonus);
-            resultedMap.put(resultedList, nextBonus);
+            PrintToConsoleAndFillResultedMap(list, currentBonus, nextBonus, resultedList);
         }
+    }
+
+    private static void PrintToConsoleAndFillResultedMap(List<Integer> list, int currentBonus, int nextBonus, List<Integer> resultedList) {
+        PrintToConsole(list, resultedList, currentBonus, nextBonus);
+        resultedMap.put(resultedList, currentBonus);
     }
 
     private static List<List<Integer>> bestListsCreation(Set<List<Integer>> resultedSet, int minBonus, List<List<Integer>> bestLists) {
