@@ -4,8 +4,24 @@ import java.util.*;
  * Created by gorshkov on 21.02.2017.
  */
 public class Main {
-    private static final int INITIAL_BONUS = 10;
-    private static final List<Integer> INITIAL_LIST = Arrays.asList(1, 2, 3, 4, 5);
+    private static final int INITIAL_BONUS = 364264;
+    private static final List<Integer> INITIAL_LIST = Arrays.asList(
+            240300,
+            107900,
+            13700,
+            13700,
+            27500,
+            27500,
+            27900,
+            /*13700,
+            13700,
+            13700,
+            13700,
+            13700,
+            13700,
+            13700,*/
+            165900
+    );
     private static Map<List<Integer>, Integer> resultedMap = new HashMap<>();
 
     public static void main(String[] args) {
